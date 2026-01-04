@@ -42,4 +42,36 @@ fetchData()
     .then((data) => {console.log(data)})
     .catch((error) =>{console.error(error)})
 
-    
+
+//Prototypal Inheritance
+
+function Person(name){
+    this.name = name ;
+}
+ Person.prototype.greet = function (){
+    console.log(`Hello my name is ${this.name}`)
+}
+
+let p1 = new Person('Tushar');
+
+p1.greet()
+ 
+
+//THIS and binding context
+
+const car = {
+    company : "toyota",
+    drive() {
+        console.log(`I drive a ${this.company}`)
+    }
+ }
+
+car.drive();
+
+const unbindedDrive = car.drive;
+unbindedDrive();
+
+const bindedDrive= car.drive.bind({company: "Maruti"});
+bindedDrive();
+
+//bind,call and apply 
