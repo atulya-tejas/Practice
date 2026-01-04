@@ -1,12 +1,21 @@
-/* 
-1. Write a function named `makeTea` that takes one parameter, `typeOfTea`, and returns a string like `"Making green tea"` when called with `"green tea"`. 
-Store the result in a variable named `teaOrder`.
-*/
+//making a funtion print to print stuff .
+
 function print(vari){
     console.log(vari);
 }
 
-print("hello");
+/* 
+1. Write a function named `makeTea` that takes one parameter, `typeOfTea`, and returns a string like `"Making green tea"` when called with `"green tea"`. 
+Store the result in a variable named `teaOrder`.
+*/
+
+function makeTea(typeOfTea){
+    let c = "making" + typeOfTea;
+    return c;
+
+}
+print(makeTea("lemon tea"));
+
 /* 
 2. Create a function named `orderTea` that takes one parameter, `teaType`. Inside this function, create another function named `confirmOrder` that returns a message like `"Order confirmed for chai"`. 
 Call `confirmOrder` from within `orderTea` and return the result.
