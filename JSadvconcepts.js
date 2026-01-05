@@ -28,7 +28,7 @@ console.log(increment());
 function fetchData(){
     return new Promise((resolve , reject) => {
         setTimeout(() => {
-            let success = true;
+            let success = false;
             if(success){
                 resolve("Data fetched successfully");
             }else{
@@ -74,4 +74,71 @@ unbindedDrive();
 const bindedDrive= car.drive.bind({company: "Maruti"});
 bindedDrive();
 
-//bind,call and apply 
+
+//Aync-await and Promise all
+function fetchUserData (){
+    return new Promise ((resolve,reject) => {
+        setTimeout(() => {
+            resolve ({name : "MOJITO", url : "https://MOJITO.com"})
+        }, 3000)
+    });
+}
+
+async function getUserData() {
+    try {
+        console.log(`fetching user data.....`);
+        const userData = await fetchUserData();
+        console.log("User data fetched succesfully");
+        
+        console.log("UserData:",userData);
+    } catch (error) {
+        console.log(`Error fetching data`,error);
+    }
+}
+getUserData();
+
+//
+
+function fetchPostData(){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('Post data fetched')
+        }, 3500);
+    });
+}
+
+function fetchCommentData(){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('Comment Data fetched')
+        }, 3500);
+    });
+}
+async function getBlogData(){
+    try {
+        console.log("fetchiing blog data")
+        // const postData = await fetchPostData();
+        // const commentData = await fetchCommentData();
+        const [postData,commentData] = await Promise.all([fetchPostData(),fetchCommentData()])
+        console.log(postData);
+        console.log(commentData);
+        console.log("Data fetched complete")
+    } catch (error) {
+        console,log('Error fetching blog data', error )
+    }
+}
+getBlogData()
+
+//Iterator and generators in javascript
+
+function* numberGenrator(){
+    yield 1;
+    yield 2;
+    yield 3;  
+}
+ let gen = numberGenrator()
+
+ console.log(gen.next().value);
+ console.log(gen.next().value);
+ console.log(gen.next().value);
+
